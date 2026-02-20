@@ -101,9 +101,9 @@ function SimulationPanel({ students }) {
                       id="risk-gauge"
                       nrOfLevels={20}
                       percent={result.probability}
-                      colors={["#4CAF50", "#FFC107", "#F44336"]}
+                      colors={["#00E676", "#FFC107", "#FF4081"]}
                       arcWidth={0.3}
-                      textColor="#000000"
+                      textColor="#FFFFFF"
                       formatTextValue={(value) => `${value}%`}
                     />
                   </CardContent>
@@ -114,7 +114,7 @@ function SimulationPanel({ students }) {
               <Grid item xs={12} md={6}>
                 <Card elevation={2}>
                   <CardContent>
-                    <Typography variant="h4">
+                    <Typography variant="h4" sx={{ fontWeight: 600, color: result.probability > 0.5 ? '#FF4081' : '#00E676' }}>
                       {(result.probability * 100).toFixed(2)}%
                     </Typography>
 
@@ -129,10 +129,11 @@ function SimulationPanel({ students }) {
                           ? "error"
                           : "success"
                       }
-                      style={{ marginTop: 10 }}
+                      variant={result.probability > 0.5 ? "filled" : "outlined"}
+                      style={{ marginTop: 10, fontWeight: 600 }}
                     />
 
-                    <Divider style={{ margin: "15px 0" }} />
+                    <Divider style={{ margin: "15px 0", borderColor: 'rgba(255,255,255,0.1)' }} />
 
                     <Typography>
                       Course: {selectedStudent.course}
@@ -174,15 +175,17 @@ function SimulationPanel({ students }) {
                           }
                         ]}
                       >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis domain={[0, 100]} />
-                        <Tooltip formatter={(value) =>
-                          `${value.toFixed(2)}%`
-                        } />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#2A3C4D" vertical={false} />
+                        <XAxis dataKey="name" stroke="#8892b0" />
+                        <YAxis domain={[0, 100]} stroke="#8892b0" />
+                        <Tooltip
+                          cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                          contentStyle={{ backgroundColor: '#0A1929', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }}
+                          formatter={(value) => `${value.toFixed(2)}%`}
+                        />
                         <Bar dataKey="value" radius={[6, 6, 0, 0]}>
-                          <Cell fill="#4CAF50" />
-                          <Cell fill="#F44336" />
+                          <Cell fill="#00E676" />
+                          <Cell fill="#FF4081" />
                         </Bar>
                       </BarChart>
                     </ResponsiveContainer>
@@ -208,15 +211,17 @@ function SimulationPanel({ students }) {
                           { sem: "Sem 5", gpa: selectedStudent.gpa_sem5 }
                         ]}
                       >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="sem" />
-                        <YAxis domain={[0, 10]} />
-                        <Tooltip />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#2A3C4D" vertical={false} />
+                        <XAxis dataKey="sem" stroke="#8892b0" />
+                        <YAxis domain={[0, 10]} stroke="#8892b0" />
+                        <Tooltip contentStyle={{ backgroundColor: '#0A1929', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} />
                         <Line
                           type="monotone"
                           dataKey="gpa"
-                          stroke="#1976D2"
-                          strokeWidth={3}
+                          stroke="#00D8FF"
+                          strokeWidth={4}
+                          dot={{ r: 4, fill: '#0A1929', strokeWidth: 2 }}
+                          activeDot={{ r: 8, fill: '#00D8FF' }}
                         />
                       </LineChart>
                     </ResponsiveContainer>

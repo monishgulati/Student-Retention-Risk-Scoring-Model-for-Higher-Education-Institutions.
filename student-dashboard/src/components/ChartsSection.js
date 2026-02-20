@@ -35,7 +35,7 @@ function ChartsSection({ students }) {
 
   return (
     <Grid container spacing={3}>
-      
+
       {/* Risk Pie */}
       <Grid item xs={12} md={6}>
         <Card elevation={4}>
@@ -44,11 +44,11 @@ function ChartsSection({ students }) {
               Risk Distribution
             </Typography>
             <PieChart width={300} height={300}>
-              <Pie data={riskData} dataKey="value" outerRadius={120}>
-                <Cell fill="#4CAF50" />
-                <Cell fill="#F44336" />
+              <Pie data={riskData} dataKey="value" outerRadius={120} innerRadius={80} stroke="none">
+                <Cell fill="#00E676" />
+                <Cell fill="#FF4081" />
               </Pie>
-              <Tooltip />
+              <Tooltip contentStyle={{ backgroundColor: '#0A1929', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} itemStyle={{ color: '#fff' }} />
             </PieChart>
           </CardContent>
         </Card>
@@ -62,11 +62,11 @@ function ChartsSection({ students }) {
               Attendance vs Risk
             </Typography>
             <BarChart width={300} height={300} data={attendanceData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="value" fill="#1976D2" />
+              <CartesianGrid strokeDasharray="3 3" stroke="#2A3C4D" vertical={false} />
+              <XAxis dataKey="name" stroke="#8892b0" />
+              <YAxis stroke="#8892b0" />
+              <Tooltip cursor={{ fill: 'rgba(255,255,255,0.05)' }} contentStyle={{ backgroundColor: '#0A1929', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} />
+              <Bar dataKey="value" fill="#00D8FF" radius={[4, 4, 0, 0]} />
             </BarChart>
           </CardContent>
         </Card>

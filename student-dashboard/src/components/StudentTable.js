@@ -2,7 +2,7 @@ import React from "react";
 import {
   Card, CardContent, Typography,
   Table, TableBody, TableCell,
-  TableHead, TableRow, Chip
+  TableHead, TableRow, Chip, TableContainer
 } from "@mui/material";
 
 function StudentTable({ students }) {
@@ -14,15 +14,15 @@ function StudentTable({ students }) {
           Complete Student Dataset
         </Typography>
 
-        <div
-          style={{
+        <TableContainer
+          sx={{
             maxHeight: "400px",
-            overflowY: "auto",
-            overflowX: "auto",
-            border: "1px solid #ddd"
+            border: "1px solid rgba(255, 255, 255, 0.1)",
+            borderRadius: 2,
+            backgroundColor: "transparent"
           }}
         >
-          <Table sx={{ minWidth: 1400 }}>
+          <Table stickyHeader sx={{ minWidth: 1400, '& th': { backgroundColor: 'rgba(10,25,41,0.95)', fontWeight: 600 } }}>
             <TableHead>
               <TableRow>
                 <TableCell>Name</TableCell>
@@ -71,7 +71,7 @@ function StudentTable({ students }) {
               ))}
             </TableBody>
           </Table>
-        </div>
+        </TableContainer>
 
       </CardContent>
     </Card>
