@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+.env
+
+# React
+student-dashboard/node_modules/
+student-dashboard/build/
+
+# OS
+.DS_Store
+Thumbs.db
