@@ -13,7 +13,7 @@ function Dashboard() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    axios.get("http://127.0.0.1:5000/students")
+    axios.get("https://student-retention-risk-scoring-model.onrender.com/students")
       .then(res => setStudents(res.data))
       .catch(err => console.error(err));
   }, []);

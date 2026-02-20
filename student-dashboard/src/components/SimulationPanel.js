@@ -38,7 +38,7 @@ function SimulationPanel({ students }) {
     if (!selectedStudent) return;
 
     const response = await axios.post(
-      "http://127.0.0.1:5000/predict",
+      "https://student-retention-risk-scoring-model.onrender.com/predict",
       { name: selectedStudent.name }
     );
 
