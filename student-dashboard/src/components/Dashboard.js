@@ -13,15 +13,15 @@ function Dashboard() {
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    axios.get("https://student-retention-risk-scoring-model.onrender.com/students")
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "https://student-retention-risk-scoring-model.onrender.com";
+    axios.get(`${API_BASE_URL}/students`)
       .then(res => setStudents(res.data))
       .catch(err => console.error(err));
   }, []);
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 3, mb: 5 }}>
-      {/* Compact Header */}
-      <Typography variant="h4" gutterBottom fontWeight="600" color="#FFFFFF">
+    <Container maxWidth="xl" sx={{ mt: 3 }}>
+      <Typography variant="h4" gutterBottom>
         Student Retention Risk Dashboard
       </Typography>
 

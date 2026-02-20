@@ -37,8 +37,9 @@ function SimulationPanel({ students }) {
   const handlePredict = async () => {
     if (!selectedStudent) return;
 
+    const API_BASE_URL = process.env.REACT_APP_API_URL || "https://student-retention-risk-scoring-model.onrender.com";
     const response = await axios.post(
-      "https://student-retention-risk-scoring-model.onrender.com/predict",
+      `${API_BASE_URL}/predict`,
       { name: selectedStudent.name }
     );
 
