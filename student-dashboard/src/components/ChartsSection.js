@@ -3,7 +3,7 @@ import { Card, CardContent, Typography, Grid } from "@mui/material";
 import {
   PieChart, Pie, Cell, Tooltip,
   BarChart, Bar, XAxis, YAxis,
-  CartesianGrid
+  CartesianGrid, ResponsiveContainer
 } from "recharts";
 
 function ChartsSection({ students }) {
@@ -43,13 +43,15 @@ function ChartsSection({ students }) {
             <Typography variant="h6">
               Risk Distribution
             </Typography>
-            <PieChart width={300} height={300}>
-              <Pie data={riskData} dataKey="value" outerRadius={120} innerRadius={80} stroke="none">
-                <Cell fill="#00E676" />
-                <Cell fill="#FF4081" />
-              </Pie>
-              <Tooltip contentStyle={{ backgroundColor: '#0A1929', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} itemStyle={{ color: '#fff' }} />
-            </PieChart>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie data={riskData} dataKey="value" outerRadius={100} innerRadius={60} stroke="none">
+                  <Cell fill="#00E676" />
+                  <Cell fill="#FF4081" />
+                </Pie>
+                <Tooltip contentStyle={{ backgroundColor: '#0A1929', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} itemStyle={{ color: '#fff' }} />
+              </PieChart>
+            </ResponsiveContainer>
           </CardContent>
         </Card>
       </Grid>
@@ -61,13 +63,15 @@ function ChartsSection({ students }) {
             <Typography variant="h6">
               Attendance vs Risk
             </Typography>
-            <BarChart width={300} height={300} data={attendanceData}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#2A3C4D" vertical={false} />
-              <XAxis dataKey="name" stroke="#8892b0" />
-              <YAxis stroke="#8892b0" />
-              <Tooltip cursor={{ fill: 'rgba(255,255,255,0.05)' }} contentStyle={{ backgroundColor: '#0A1929', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} />
-              <Bar dataKey="value" fill="#00D8FF" radius={[4, 4, 0, 0]} />
-            </BarChart>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={attendanceData}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#2A3C4D" vertical={false} />
+                <XAxis dataKey="name" stroke="#8892b0" />
+                <YAxis stroke="#8892b0" />
+                <Tooltip cursor={{ fill: 'rgba(255,255,255,0.05)' }} contentStyle={{ backgroundColor: '#0A1929', borderColor: 'rgba(255,255,255,0.1)', borderRadius: '8px' }} />
+                <Bar dataKey="value" fill="#00D8FF" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
           </CardContent>
         </Card>
       </Grid>

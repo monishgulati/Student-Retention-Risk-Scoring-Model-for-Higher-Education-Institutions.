@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography, Box } from "@mui/material";
 import axios from "axios";
 import KPISection from "./KPISection";
 import ChartsSection from "./ChartsSection";
@@ -19,10 +19,39 @@ function Dashboard() {
   }, []);
 
   return (
-    <Container maxWidth="xl" sx={{ mt: 3 }}>
-      <Typography variant="h4" gutterBottom>
-        Student Retention Risk Dashboard
-      </Typography>
+    <Container maxWidth="xl" sx={{ mt: 3, mb: 5 }}>
+      {/* Premium Hero Section */}
+      <Box
+        sx={{
+          width: '100%',
+          height: { xs: '200px', md: '280px' },
+          borderRadius: 4,
+          mb: 4,
+          backgroundImage: `linear-gradient(to right, rgba(10, 25, 41, 0.9) 0%, rgba(10, 25, 41, 0.4) 100%), url('/banner.png')`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'flex-start',
+          px: { xs: 3, md: 8 },
+          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.5)',
+          border: '1px solid rgba(255, 255, 255, 0.1)',
+        }}
+      >
+        <Box>
+          <Typography
+            variant="h3"
+            fontWeight="700"
+            color="#FFFFFF"
+            sx={{
+              textShadow: '0px 4px 20px rgba(0, 216, 255, 0.6)',
+              letterSpacing: '1px'
+            }}
+          >
+            Student Retention Risk Dashboard
+          </Typography>
+        </Box>
+      </Box>
 
       <KPISection students={students} />
 
